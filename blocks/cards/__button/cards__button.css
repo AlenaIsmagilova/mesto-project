@@ -1,0 +1,20 @@
+.cards__button {
+  background-image: url(../../../images/Group.svg);
+  padding: 0;
+  width: 22px;
+  height: 19px;
+  border: 0 transparent;
+  background-repeat: no-repeat;
+  align-self: center;
+  background-color: transparent;
+  transition: opacity 1s ease;
+}
+
+.cards__button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.cards__button:active {
+  background-color: black;
+}

@@ -1,0 +1,8 @@
+.cards__desc {
+  display: flex;
+  padding: 25px 15px 31px 21px;
+  min-width: 246px;
+  background-color: #ffffff;
+  border-radius: 0 0 10px 10px;
+  justify-content: space-between;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Mesto</title>
+  </head>
+  <body class="page">
+    <header class="header">
+      <img class="header__logo" src="./images/logo.svg" alt="место" />
+      <div class="header__line"></div>
+    </header>
+    <main class="content">
+      <section class="profile">
+        <div class="profile__desc">
+          <img
+            class="profile__avatar"
+            src="./images/Avatar.png"
+            alt="фото жак-ив-кусто"
+          />
+          <div class="profile__info">
+            <h1 class="profile__name">
+              Жак-Ив Кусто
+              <button class="profile__button"></button>
+            </h1>
+            <p class="profile__subtitle">Исследователь океана</p>
+          </div>
+        </div>
+        <button class="profile__button-added"></button>
+      </section>
+      <section class="cards">
+        <ul class="cards__list">
+          <li class="cards__item">
+            <img
+              class="cards__image"
+              src="./images/karachaevsk.jpg"
+              alt="старая часовня"
+            />
+            <div class="cards__desc">
+              <h2 class="cards__title">Карачаевск</h2>
+              <button class="cards__button"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img
+              class="cards__image"
+              src="./images/elbrus.jpg"
+              alt="рассвет в горах"
+            />
+            <div class="cards__desc">
+              <h2 class="cards__title">Гора Эльбрус</h2>
+              <button class="cards__button"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/dombay.jpg" alt="горы" />
+            <div class="cards__desc">
+              <h2 class="cards__title">Домбай</h2>
+              <button class="cards__button"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img
+              class="cards__image"
+              src="./images/elbrus.jpg"
+              alt="рассвет в горах"
+            />
+            <div class="cards__desc">
+              <h2 class="cards__title">Гора Эльбрус</h2>
+              <button class="cards__button"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="./images/dombay.jpg" alt="горы" />
+            <div class="cards__desc">
+              <h2 class="cards__title">Домбай</h2>
+              <button class="cards__button"></button>
+            </div>
+          </li>
+          <li class="cards__item">
+            <img
+              class="cards__image"
+              src="./images/karachaevsk.jpg"
+              alt="старая часовня"
+            />
+            <div class="cards__desc">
+              <h2 class="cards__title">Карачаево-Черкессия</h2>
+              <button class="cards__button"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+    </footer>
+    <div class="popup popup_opened">
+      <div class="popup__container">
+        <button class="popup__button-closed"></button>
+        <form class="form">
+          <h2 class="form__title">Редактировать профиль</h2>
+          <input
+            class="form__input"
+            type="text"
+            name="firstname"
+            placeholder="Жак-Ив Кусто"
+          />
+          <input
+            class="form__input"
+            type="text"
+            placeholder="Исследователь океана"
+          />
+          <button class="form__button" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

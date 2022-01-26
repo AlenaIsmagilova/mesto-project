@@ -10,7 +10,6 @@
   <body class="page">
     <header class="header">
       <img class="header__logo" src="./images/logo.svg" alt="место" />
-      <div class="header__line"></div>
     </header>
     <main class="content">
       <section class="profile">
@@ -21,14 +20,14 @@
             alt="фото жак-ив-кусто"
           />
           <div class="profile__info">
-            <h1 class="profile__name">
-              Жак-Ив Кусто
-              <button class="profile__button"></button>
-            </h1>
+            <div class="profile__wrapper">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__button" type="button"></button>
+            </div>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__button-added"></button>
+        <button class="profile__button-added" type="button"></button>
       </section>
       <section class="cards">
         <ul class="cards__list">
@@ -40,7 +39,10 @@
             />
             <div class="cards__desc">
               <h2 class="cards__title">Карачаевск</h2>
-              <button class="cards__button"></button>
+              <button
+                class="cards__button cards__button_active"
+                type="button"
+              ></button>
             </div>
           </li>
           <li class="cards__item">
@@ -51,14 +53,20 @@
             />
             <div class="cards__desc">
               <h2 class="cards__title">Гора Эльбрус</h2>
-              <button class="cards__button"></button>
+              <button
+                class="cards__button cards__button_active"
+                type="button"
+              ></button>
             </div>
           </li>
           <li class="cards__item">
             <img class="cards__image" src="./images/dombay.jpg" alt="горы" />
             <div class="cards__desc">
               <h2 class="cards__title">Домбай</h2>
-              <button class="cards__button"></button>
+              <button
+                class="cards__button cards__button_active"
+                type="button"
+              ></button>
             </div>
           </li>
           <li class="cards__item">
@@ -69,14 +77,20 @@
             />
             <div class="cards__desc">
               <h2 class="cards__title">Гора Эльбрус</h2>
-              <button class="cards__button"></button>
+              <button
+                class="cards__button cards__button_active"
+                type="button"
+              ></button>
             </div>
           </li>
           <li class="cards__item">
             <img class="cards__image" src="./images/dombay.jpg" alt="горы" />
             <div class="cards__desc">
               <h2 class="cards__title">Домбай</h2>
-              <button class="cards__button"></button>
+              <button
+                class="cards__button cards__button_active"
+                type="button"
+              ></button>
             </div>
           </li>
           <li class="cards__item">
@@ -87,7 +101,10 @@
             />
             <div class="cards__desc">
               <h2 class="cards__title">Карачаево-Черкессия</h2>
-              <button class="cards__button"></button>
+              <button
+                class="cards__button cards__button_active"
+                type="button"
+              ></button>
             </div>
           </li>
         </ul>
@@ -96,11 +113,11 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-    <div class="popup popup_opened">
+    <div class="popup">
       <div class="popup__container">
-        <button class="popup__button-closed"></button>
-        <form class="form">
-          <h2 class="form__title">Редактировать профиль</h2>
+        <button class="popup__button-closed" type="button"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="form" name="editForm">
           <input
             class="form__input"
             type="text"
@@ -110,6 +127,7 @@
           <input
             class="form__input"
             type="text"
+            name="profession"
             placeholder="Исследователь океана"
           />
           <button class="form__button" type="submit">Сохранить</button>

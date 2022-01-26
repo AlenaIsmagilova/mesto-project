@@ -19,5 +19,7 @@
     width: 18px;
     height: 18px;
     margin-left: 10px;
+    margin-top: 22px;
+    background-size: contain;
   }
 }

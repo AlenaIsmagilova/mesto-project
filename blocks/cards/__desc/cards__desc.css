@@ -6,3 +6,9 @@
   border-radius: 0 0 10px 10px;
   justify-content: space-between;
 }
+
+@media screen and (max-width: 767px) {
+  .cards__desc {
+    padding-bottom: 25px;
+  }
+}

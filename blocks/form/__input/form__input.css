@@ -4,17 +4,19 @@
   border: 1px white solid;
   border-bottom: 1px grey solid;
   margin-bottom: 30px;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 0;
 }
 
 .form__input:last-of-type {
   margin-bottom: 0;
 }
 
-input::placeholder {
+.form__input::placeholder {
   color: #000000;
-  font-size: 14px;
-  line-height: 17px;
   font-weight: 400;
+  margin-bottom: 13px;
 }
 
 @media screen and (max-width: 767px) {

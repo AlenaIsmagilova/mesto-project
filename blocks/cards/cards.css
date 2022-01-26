@@ -7,5 +7,6 @@
 @media screen and (max-width: 767px) {
   .cards {
     padding-bottom: 48px;
+    padding-top: 36px;
   }
 }

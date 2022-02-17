@@ -130,6 +130,4 @@ popupBtnClosedAdd.addEventListener("click", function () {
 
 popupBtnClosedImage.addEventListener("click", function () {
   popupImage.classList.remove("popup_opened");
-  popupElImage.removeAttribute("src");
-  popupElImage.removeAttribute("alt");
 });

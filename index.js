@@ -62,6 +62,7 @@ function createCard(link, name) {
   const cardsImage = cardsElement.querySelector(".cards__image");
   cardsElement.querySelector(".cards__title").textContent = name;
   cardsImage.setAttribute("src", link);
+  cardsImage.setAttribute("alt", name);
   //like
   cardsButton.addEventListener("click", function () {
     cardsButton.classList.toggle("cards__button_active");

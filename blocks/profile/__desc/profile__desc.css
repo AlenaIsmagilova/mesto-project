@@ -1,5 +1,6 @@
 .profile__desc {
   display: flex;
+  position: relative;
 }
 
 @media screen and (max-width: 767px) {

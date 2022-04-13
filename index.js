@@ -20,6 +20,7 @@ const popupElImage = document.querySelector(".popup__image");
 const popupElCaption = document.querySelector(".popup__caption");
 const card = document.querySelector("#card").content;
 const cardsList = document.querySelector(".cards__list");
+const editProfileAvatar = document.querySelector(".profile__avatar");
 
 const initialCards = [
   {
@@ -56,6 +57,22 @@ function openPopup(popup) {
   popup.classList.add("popup_opened");
 }
 
+function handleOutsiteClick(evt) {
+  if (evt.target.classList.contains("popup")) {
+    const openedPopup = evt.target;
+    closePopup(openedPopup);
+    window.removeEventListener("click", handleOutsiteClick);
+  }
+}
+
+function handleEscapeClick(evt) {
+  if (evt.keyCode === 27) {
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+    window.removeEventListener("click", handleOutsiteClick);
+  }
+}
+
 function createCard(link, name) {
   const cardsElement = card.querySelector(".cards__item").cloneNode(true);
   const cardsButton = cardsElement.querySelector(".cards__button");
@@ -72,8 +89,11 @@ function createCard(link, name) {
   buttonDelete.addEventListener("click", function () {
     cardsElement.remove();
   });
-  cardsImage.addEventListener("click", function () {
+  cardsImage.addEventListener("click", function (evt) {
+    evt.stopPropagation();
     openPopup(popupImage);
+    window.addEventListener("click", handleOutsiteClick);
+    window.addEventListener("keydown", handleEscapeClick);
     popupElImage.setAttribute("src", link);
     popupElImage.setAttribute("alt", name);
     popupElCaption.textContent = name;
@@ -101,18 +121,24 @@ function addFormSubmitHandler(evt) {
 
 addForm.addEventListener("submit", addFormSubmitHandler);
 
-profileButton.addEventListener("click", function () {
+profileButton.addEventListener("click", function (evt) {
+  evt.stopPropagation();
   openPopup(popupEdit);
   inputNameEditForm.value = profileName.textContent;
   inputProfEditForm.value = profileProf.textContent;
+  window.addEventListener("click", handleOutsiteClick);
+  window.addEventListener("keydown", handleEscapeClick);
 });
 
 popupBtnClosedEdit.addEventListener("click", function () {
   closePopup(popupEdit);
 });
 
-profileButtonAdd.addEventListener("click", function () {
+profileButtonAdd.addEventListener("click", function (evt) {
+  evt.stopPropagation();
   openPopup(popupAdd);
+  window.addEventListener("click", handleOutsiteClick);
+  window.addEventListener("keydown", handleEscapeClick);
 });
 
 popupBtnClosedAdd.addEventListener("click", function () {

@@ -4,21 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
     <title>Mesto</title>
   </head>
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="место" />
+      <img
+        class="header__logo"
+        src="<%=require('./images/logo.svg')%>"
+        alt="место"
+      />
     </header>
     <main class="content">
       <section class="profile">
         <div class="profile__desc">
           <img
             class="profile__avatar"
-            src="./images/Avatar.png"
+            src="<%=require('./images/Avatar.png')%>"
             alt="фото жак-ив-кусто"
           />
+          <div class="profile__avatar-edit"></div>
           <div class="profile__info">
             <div class="profile__wrapper">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -60,18 +65,30 @@
         ></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="form" name="editForm" id="editForm">
-          <input
-            class="form__input"
-            id="inputFirstname"
-            type="text"
-            name="firstname"
-          />
-          <input
-            class="form__input"
-            id="inputProf"
-            type="text"
-            name="profession"
-          />
+          <label class="form__field">
+            <input
+              class="form__input"
+              id="inputFirstname"
+              type="text"
+              name="firstname"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="inputFirstname-error form__input-error"></span>
+          </label>
+          <label class="form__field">
+            <input
+              class="form__input"
+              id="inputProf"
+              type="text"
+              name="profession"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span class="inputProf-error form__input-error"></span>
+          </label>
           <button class="form__button" type="submit">Сохранить</button>
         </form>
       </div>
@@ -85,9 +102,52 @@
         ></button>
         <h2 class="popup__title">Новое место</h2>
         <form class="form" name="addForm" id="addForm">
-          <input class="form__input" id="inputPlace" type="text" name="place" />
-          <input class="form__input" id="inputLink" type="text" name="link" />
-          <button class="form__button" type="submit">Создать</button>
+          <label class="form__field">
+            <input
+              class="form__input"
+              id="inputPlace"
+              type="text"
+              name="place"
+              minlength="2"
+              maxlength="30"
+              required
+            />
+            <span class="inputPlace-error form__input-error"></span>
+          </label>
+          <label class="form__field">
+            <input
+              class="form__input"
+              id="inputLink"
+              type="url"
+              name="link"
+              required
+            />
+            <span class="inputLink-error form__input-error"></span>
+          </label>
+          <button class="form__button" type="submit" disabled>Создать</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup" id="popupEditAvatar">
+      <div class="popup__container">
+        <button
+          class="popup__button-closed"
+          id="popupBtnEditAvatar"
+          type="button"
+        ></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form class="form" name="editAvatarForm" id="editAvatarForm">
+          <label class="form__field">
+            <input
+              class="form__input"
+              id="inputLinkEditAvatar"
+              type="url"
+              name="link"
+              required
+            />
+            <span class="inputLinkEditAvatar-error form__input-error"></span>
+          </label>
+          <button class="form__button" type="submit" disabled>Сохранить</button>
         </form>
       </div>
     </div>
@@ -98,9 +158,9 @@
           id="popupBtnImage"
           type="button"
         ></button>
-        <img class="popup__image">
-        <figcaption class="popup__caption"><figcaption>
+        <img class="popup__image" />
+        <figcaption class="popup__caption"></figcaption>
       </div>
-    <script src="./index.js"></script>
+    </div>
   </body>
 </html>

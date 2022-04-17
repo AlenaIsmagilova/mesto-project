@@ -1,8 +1,0 @@
-.profile__avatar {
-  width: 120px;
-  height: 120px;
-}
-
-.profile__avatar:hover ~ .profile__avatar_edit {
-  opacity: 1;
-}

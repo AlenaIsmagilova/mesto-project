@@ -1,4 +1,4 @@
-.profile__avatar_edit {
+.profile__avatar-edit {
   background: rgba(0, 0, 0, 0.8);
   position: absolute;
   top: 0;
@@ -7,11 +7,15 @@
   bottom: 0;
   opacity: 0;
   transition: opacity 0.5s ease;
-  background-image: url("../../../../images/editPencil.svg");
+  background-image: url("../../../images/editPencil.svg");
   background-size: 26px 26px;
   background-repeat: no-repeat;
   background-position: center;
   width: 120px;
   height: 120px;
   cursor: pointer;
+}
+
+.profile__avatar-edit:hover {
+  opacity: 1;
 }

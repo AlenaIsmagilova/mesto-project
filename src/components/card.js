@@ -1,9 +1,5 @@
-import { card } from "./constants.js";
+import { card, popupElImage, popupElCaption, popupImage } from "./constants.js";
 import { openPopup } from "./modal.js";
-import { popupElImage } from "./constants.js";
-import { popupElCaption } from "./constants.js";
-import { popupImage } from "./constants.js";
-import { handleOutsiteClick, handleEscapeClick } from "./modal.js";
 
 export function createCard(link, name) {
   const cardsElement = card.querySelector(".cards__item").cloneNode(true);
@@ -24,8 +20,6 @@ export function createCard(link, name) {
   cardsImage.addEventListener("click", function (evt) {
     evt.stopPropagation();
     openPopup(popupImage);
-    window.addEventListener("click", handleOutsiteClick);
-    window.addEventListener("keydown", handleEscapeClick);
     popupElImage.setAttribute("src", link);
     popupElImage.setAttribute("alt", name);
     popupElCaption.textContent = name;

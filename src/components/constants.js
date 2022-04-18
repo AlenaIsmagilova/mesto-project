@@ -64,5 +64,5 @@ export const inputLinkEditAvatar = document.querySelector(
 );
 export const imageProfileAvatar = document.querySelector(".profile__avatar");
 export const editAvatarForm = document.querySelector("#editAvatarForm");
-export const formElement = document.querySelector(".form");
-export const formInput = formElement.querySelector(".form__input");
+export const formInput = document.querySelector(".form__input");
+export const popups = document.querySelectorAll(".popup");

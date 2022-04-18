@@ -1,11 +1,7 @@
-// import { options } from "./constants";
-
 const showInputError = (formElement, inputElement, errorMessage, myOptions) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  // inputElement.classList.add("form__input_type_error");
   inputElement.classList.add(myOptions.errorClass.substring(1));
   errorElement.textContent = errorMessage;
-  // errorElement.classList.add("form__input-error_active");
   errorElement.classList.add(myOptions.inputErrorClass.substring(1));
 };
 

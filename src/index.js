@@ -12,13 +12,8 @@ import {
   inputProfEditForm,
   editAvatarButton,
   popupEditAvatar,
-  popupBtnEditAvatar,
-  popupBtnClosedEdit,
   profileButtonAdd,
   popupAdd,
-  popupBtnClosedAdd,
-  popupBtnClosedImage,
-  popupImage,
   cardsList,
   initialCards,
   popups,
@@ -64,25 +59,9 @@ editAvatarButton.addEventListener("click", function (evt) {
   openPopup(popupEditAvatar);
 });
 
-popupBtnEditAvatar.addEventListener("click", function () {
-  closePopup(popupEditAvatar);
-});
-
-popupBtnClosedEdit.addEventListener("click", function () {
-  closePopup(popupEdit);
-});
-
 profileButtonAdd.addEventListener("click", function (evt) {
   evt.stopPropagation();
   openPopup(popupAdd);
-});
-
-popupBtnClosedAdd.addEventListener("click", function () {
-  closePopup(popupAdd);
-});
-
-popupBtnClosedImage.addEventListener("click", function () {
-  closePopup(popupImage);
 });
 
 initialCards.forEach(function (item) {

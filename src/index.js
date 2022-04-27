@@ -27,7 +27,7 @@ import {
   closePopup,
 } from "./components/modal.js";
 import { createCard } from "./components/card.js";
-import { getUser, getCards } from "./api.js";
+import { getUser, getCards } from "./components/api.js";
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", function (evt) {

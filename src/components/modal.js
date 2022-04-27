@@ -15,7 +15,7 @@ import {
   formButton,
 } from "./constants.js";
 import { createCard } from "./card.js";
-import { updateUserProfile, addNewCard, updateUserAvatar } from "../api.js";
+import { updateUserProfile, addNewCard, updateUserAvatar } from "./api.js";
 
 export function closePopup(popup) {
   popup.classList.remove("popup_opened");

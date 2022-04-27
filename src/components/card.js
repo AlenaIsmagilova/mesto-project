@@ -5,10 +5,9 @@ import {
   popupImage,
   popupDeleteCard,
   deleteCardButton,
-  formButton,
 } from "./constants.js";
 import { closePopup, openPopup } from "./modal.js";
-import { like, unlike, deleteCard } from "../api.js";
+import { like, unlike, deleteCard } from "./api.js";
 
 export function createCard(
   link,

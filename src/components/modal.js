@@ -12,8 +12,10 @@ import {
   inputLinkAddForm,
   inputPlaceAddForm,
   popupAdd,
+  formButton,
 } from "./constants.js";
 import { createCard } from "./card.js";
+import { updateUserProfile, addNewCard, updateUserAvatar } from "../api.js";
 
 export function closePopup(popup) {
   popup.classList.remove("popup_opened");
@@ -32,28 +34,88 @@ export function handleEscapeClick(evt) {
   }
 }
 
+function renderLoading(isLoading) {
+  formButton.forEach(function (button) {
+    if (isLoading) {
+      button.textContent = "Сохранение...";
+    } else {
+      button.textContent = "Сохранить";
+    }
+  });
+}
+
 export function handleAddFormSubmit(evt) {
   evt.preventDefault();
-  //закрытие попапа
+  renderLoading(true);
   closePopup(popupAdd);
-  //добавление карточек
-  const card = createCard(inputLinkAddForm.value, inputPlaceAddForm.value);
-  cardsList.prepend(card);
-  addForm.reset();
-  evt.submitter.setAttribute("disabled", true);
+  addNewCard({
+    name: inputPlaceAddForm.value,
+    link: inputLinkAddForm.value,
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+    .then((data) => {
+      console.log(data);
+      const card = createCard(
+        data.link,
+        data.name,
+        data.likes.length,
+        data.owner._id,
+        data.owner._id,
+        data._id
+      );
+      cardsList.prepend(card);
+      addForm.reset();
+      evt.submitter.setAttribute("disabled", true);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => renderLoading(false));
 }
 
 export function handleEditFormSubmit(evt) {
   evt.preventDefault();
-  profileName.textContent = formInput.value;
-  profileProf.textContent = inputProfEditForm.value;
+  renderLoading(true);
+  updateUserProfile({
+    name: formInput.value,
+    about: inputProfEditForm.value,
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+    .then((data) => {
+      profileName.textContent = data.name;
+      profileProf.textContent = data.about;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => renderLoading(false));
   closePopup(popupEdit);
 }
 
 export function handleEditAvatarFormSubmit(evt) {
   evt.preventDefault();
-  imageProfileAvatar.setAttribute("src", inputLinkEditAvatar.value);
-  closePopup(popupEditAvatar);
-  inputLinkEditAvatar.value = "";
-  evt.submitter.setAttribute("disabled", true);
+  renderLoading(true);
+  updateUserAvatar({
+    avatar: inputLinkEditAvatar.value,
+  })
+    .then((data) => {
+      imageProfileAvatar.setAttribute("src", data.avatar);
+      closePopup(popupEditAvatar);
+      inputLinkEditAvatar.value = "";
+      evt.submitter.setAttribute("disabled", true);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => renderLoading(false));
 }

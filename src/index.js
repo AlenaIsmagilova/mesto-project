@@ -15,7 +15,7 @@ import {
   profileButtonAdd,
   popupAdd,
   cardsList,
-  initialCards,
+  editProfileAvatar,
   popups,
 } from "./components/constants.js";
 import { enableValidation } from "./components/validate.js";
@@ -27,6 +27,7 @@ import {
   closePopup,
 } from "./components/modal.js";
 import { createCard } from "./components/card.js";
+import { getUser, getCards } from "./api.js";
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", function (evt) {
@@ -63,8 +64,26 @@ profileButtonAdd.addEventListener("click", function (evt) {
   evt.stopPropagation();
   openPopup(popupAdd);
 });
-
-initialCards.forEach(function (item) {
-  const card = createCard(item.link, item.name);
-  cardsList.append(card);
+getUser().then((user) => {
+  getCards()
+    .then((cards) => {
+      cards.forEach(function (card) {
+        const createdCard = createCard(
+          card.link,
+          card.name,
+          card.likes.length,
+          user._id,
+          card.owner._id,
+          card._id,
+          card.likes
+        );
+        cardsList.append(createdCard);
+        profileName.textContent = user.name;
+        profileProf.textContent = user.about;
+        editProfileAvatar.setAttribute("src", user.avatar);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });

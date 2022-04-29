@@ -12,7 +12,7 @@ import {
   inputLinkAddForm,
   inputPlaceAddForm,
   popupAdd,
-  formButtons,
+  deleteCardButton,
 } from "./constants.js";
 import { createCard } from "./card.js";
 import { updateUserProfile, addNewCard, updateUserAvatar } from "./api.js";
@@ -20,6 +20,7 @@ import { updateUserProfile, addNewCard, updateUserAvatar } from "./api.js";
 export function closePopup(popup) {
   popup.classList.remove("popup_opened");
   window.removeEventListener("keydown", handleEscapeClick);
+  // deleteCardButton.replaceWith(deleteCardButton.cloneNode(true));
 }
 
 export function openPopup(popup) {

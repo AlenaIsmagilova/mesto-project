@@ -17,6 +17,7 @@ import {
   cardsList,
   editProfileAvatar,
   popups,
+  deleteCardButton,
 } from "./components/constants.js";
 import { enableValidation } from "./components/validate.js";
 import {

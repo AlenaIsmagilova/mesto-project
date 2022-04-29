@@ -25,11 +25,16 @@ export function createCard(
   const iconDeleteButton = cardsElement.querySelector(".cards__button-delete");
   iconDeleteButton.addEventListener("click", function () {
     openPopup(popupDeleteCard);
+    const deleteCardButton = document.querySelector("#deleteCardButton");
     deleteCardButton.addEventListener("click", function () {
-      deleteCard(cardId).then(() => {
-        cardsElement.remove();
-        closePopup(popupDeleteCard);
-      });
+      deleteCard(cardId)
+        .then(() => {
+          cardsElement.remove();
+          closePopup(popupDeleteCard);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     });
   });
   if (currentUserId !== ownerId) {

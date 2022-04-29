@@ -17,6 +17,7 @@ import {
   cardsList,
   editProfileAvatar,
   popups,
+  deleteCardButton,
 } from "./components/constants.js";
 import { enableValidation } from "./components/validate.js";
 import {
@@ -64,26 +65,30 @@ profileButtonAdd.addEventListener("click", function (evt) {
   evt.stopPropagation();
   openPopup(popupAdd);
 });
-getUser().then((user) => {
-  getCards()
-    .then((cards) => {
-      cards.forEach(function (card) {
-        const createdCard = createCard(
-          card.link,
-          card.name,
-          card.likes.length,
-          user._id,
-          card.owner._id,
-          card._id,
-          card.likes
-        );
-        cardsList.append(createdCard);
-        profileName.textContent = user.name;
-        profileProf.textContent = user.about;
-        editProfileAvatar.setAttribute("src", user.avatar);
+getUser()
+  .then((user) => {
+    profileName.textContent = user.name;
+    profileProf.textContent = user.about;
+    editProfileAvatar.setAttribute("src", user.avatar);
+    getCards()
+      .then((cards) => {
+        cards.forEach(function (card) {
+          const createdCard = createCard(
+            card.link,
+            card.name,
+            card.likes.length,
+            user._id,
+            card.owner._id,
+            card._id,
+            card.likes
+          );
+          cardsList.append(createdCard);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+  })
+  .catch((err) => {
+    console.log(err);
+  });

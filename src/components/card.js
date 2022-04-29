@@ -25,6 +25,7 @@ export function createCard(
   const iconDeleteButton = cardsElement.querySelector(".cards__button-delete");
   iconDeleteButton.addEventListener("click", function () {
     openPopup(popupDeleteCard);
+    const deleteCardButton = document.querySelector("#deleteCardButton");
     deleteCardButton.addEventListener("click", function () {
       deleteCard(cardId)
         .then(() => {

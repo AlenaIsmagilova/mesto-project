@@ -12,7 +12,7 @@ import {
   inputLinkAddForm,
   inputPlaceAddForm,
   popupAdd,
-  formButton,
+  formButtons,
 } from "./constants.js";
 import { createCard } from "./card.js";
 import { updateUserProfile, addNewCard, updateUserAvatar } from "./api.js";
@@ -34,30 +34,13 @@ export function handleEscapeClick(evt) {
   }
 }
 
-function renderLoading(isLoading) {
-  formButton.forEach(function (button) {
-    if (isLoading) {
-      button.textContent = "Сохранение...";
-    } else {
-      button.textContent = "Сохранить";
-    }
-  });
-}
-
 export function handleAddFormSubmit(evt) {
   evt.preventDefault();
-  renderLoading(true);
-  closePopup(popupAdd);
+  evt.submitter.textContent = "Сохранение...";
   addNewCard({
     name: inputPlaceAddForm.value,
     link: inputLinkAddForm.value,
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
     .then((data) => {
       console.log(data);
       const card = createCard(
@@ -68,6 +51,7 @@ export function handleAddFormSubmit(evt) {
         data.owner._id,
         data._id
       );
+      closePopup(popupAdd);
       cardsList.prepend(card);
       addForm.reset();
       evt.submitter.setAttribute("disabled", true);
@@ -75,36 +59,30 @@ export function handleAddFormSubmit(evt) {
     .catch((err) => {
       console.log(err);
     })
-    .finally(() => renderLoading(false));
+    .finally(() => (evt.submitter.textContent = "Сохранить"));
 }
 
 export function handleEditFormSubmit(evt) {
   evt.preventDefault();
-  renderLoading(true);
+  evt.submitter.textContent = "Сохранение...";
   updateUserProfile({
     name: formInput.value,
     about: inputProfEditForm.value,
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
     .then((data) => {
       profileName.textContent = data.name;
       profileProf.textContent = data.about;
+      closePopup(popupEdit);
     })
     .catch((err) => {
       console.log(err);
     })
-    .finally(() => renderLoading(false));
-  closePopup(popupEdit);
+    .finally(() => (evt.submitter.textContent = "Сохранить"));
 }
 
 export function handleEditAvatarFormSubmit(evt) {
   evt.preventDefault();
-  renderLoading(true);
+  evt.submitter.textContent = "Сохранение...";
   updateUserAvatar({
     avatar: inputLinkEditAvatar.value,
   })
@@ -117,5 +95,5 @@ export function handleEditAvatarFormSubmit(evt) {
     .catch((err) => {
       console.log(err);
     })
-    .finally(() => renderLoading(false));
+    .finally(() => (evt.submitter.textContent = "Сохранить"));
 }

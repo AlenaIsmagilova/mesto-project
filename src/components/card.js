@@ -26,10 +26,14 @@ export function createCard(
   iconDeleteButton.addEventListener("click", function () {
     openPopup(popupDeleteCard);
     deleteCardButton.addEventListener("click", function () {
-      deleteCard(cardId).then(() => {
-        cardsElement.remove();
-        closePopup(popupDeleteCard);
-      });
+      deleteCard(cardId)
+        .then(() => {
+          cardsElement.remove();
+          closePopup(popupDeleteCard);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     });
   });
   if (currentUserId !== ownerId) {

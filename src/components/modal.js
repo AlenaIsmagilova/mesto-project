@@ -20,8 +20,6 @@ import { updateUserProfile, addNewCard, updateUserAvatar } from "./api.js";
 export function closePopup(popup) {
   popup.classList.remove("popup_opened");
   window.removeEventListener("keydown", handleEscapeClick);
-  const deleteCardButton = document.querySelector("#deleteCardButton");
-  deleteCardButton.replaceWith(deleteCardButton.cloneNode(true));
 }
 
 export function openPopup(popup) {

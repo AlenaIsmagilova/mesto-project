@@ -9,6 +9,8 @@ import {
 import { closePopup, openPopup } from "./modal.js";
 import { like, unlike, deleteCard } from "./api.js";
 
+export let cardToDelete = {};
+
 export function createCard(
   link,
   name,
@@ -25,17 +27,7 @@ export function createCard(
   const iconDeleteButton = cardsElement.querySelector(".cards__button-delete");
   iconDeleteButton.addEventListener("click", function () {
     openPopup(popupDeleteCard);
-    const deleteCardButton = document.querySelector("#deleteCardButton");
-    deleteCardButton.addEventListener("click", function () {
-      deleteCard(cardId)
-        .then(() => {
-          cardsElement.remove();
-          closePopup(popupDeleteCard);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    });
+    cardToDelete = { cardId, cardsElement };
   });
   if (currentUserId !== ownerId) {
     iconDeleteButton.classList.add("cards__button-delete_type_inactive");

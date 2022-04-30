@@ -18,6 +18,7 @@ import {
   editProfileAvatar,
   popups,
   deleteCardButton,
+  popupDeleteCard,
 } from "./components/constants.js";
 import { enableValidation } from "./components/validate.js";
 import {
@@ -27,8 +28,8 @@ import {
   openPopup,
   closePopup,
 } from "./components/modal.js";
-import { createCard } from "./components/card.js";
-import { getUser, getCards } from "./components/api.js";
+import { createCard, cardToDelete } from "./components/card.js";
+import { getUser, getCards, deleteCard } from "./components/api.js";
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", function (evt) {
@@ -92,3 +93,14 @@ getUser()
   .catch((err) => {
     console.log(err);
   });
+
+deleteCardButton.addEventListener("click", function () {
+  deleteCard(cardToDelete.cardId)
+    .then(() => {
+      cardToDelete.cardsElement.remove();
+      closePopup(popupDeleteCard);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});

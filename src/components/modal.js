@@ -17,6 +17,7 @@ import {
 import { createCard } from "./card.js";
 import { Api } from "./Api.js";
 import { data } from "autoprefixer";
+import { Popup } from "./Popup.js";
 
 const api = new Api({
   baseUrl: "https://nomoreparties.co/v1/plus-cohort-9",
@@ -26,43 +27,7 @@ const api = new Api({
   },
 });
 
-export class Popup {
-  constructor(selector) {
-    this.popup = document.querySelector(selector);
-  }
 
-  //открытие попапа
-  open() {
-    this.popup.classList.add("popup_opened");
-    window.addEventListener("keydown", this._handleEscClose);
-  }
-
-  //закрытие попапа
-  close() {
-    this.popup.classList.remove("popup_opened");
-    window.removeEventListener("keydown", this._handleEscClose);
-  }
-
-  //метод для закрытия попапа клавишей Esc
-  _handleEscClose(evt) {
-    if (evt.key === "Escape") {
-      const openedPopup = document.querySelector(".popup_opened");
-      this.close(openedPopup);
-    }
-  }
-
-  //cлушатель событий
-  setEventListeners() {
-    this.popup.addEventListener("mousedown", (evt) => {
-      if (evt.target.classList.contains("popup_opened")) {
-        this.close();
-      }
-      if (evt.target.classList.contains("popup__button-closed")) {
-        this.close();
-      }
-    });
-  }
-}
 
 export class PopupWithImage extends Popup {
   constructor(selector) {

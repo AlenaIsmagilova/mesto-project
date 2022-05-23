@@ -21,7 +21,7 @@ import {
   popupImage,
   card,
 } from "./components/constants.js";
-import { enableValidation } from "./components/Validate.js";
+import { enableValidation } from "./components/validate.js";
 import {
   handleEditAvatarFormSubmit,
   openPopup,

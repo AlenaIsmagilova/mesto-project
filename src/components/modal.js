@@ -15,7 +15,7 @@ import {
   deleteCardButton,
 } from "./constants.js";
 import { createCard } from "./card.js";
-import { Api } from "./api.js";
+import { Api } from "./Api.js";
 import { data } from "autoprefixer";
 
 const api = new Api({

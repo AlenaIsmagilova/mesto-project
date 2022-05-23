@@ -21,7 +21,7 @@ import {
   popupImage,
   card,
 } from "./components/constants.js";
-import { enableValidation } from "./components/validate.js";
+import { enableValidation } from "./components/Validate.js";
 import {
   handleEditAvatarFormSubmit,
   openPopup,
@@ -30,10 +30,14 @@ import {
   PopupWithImage,
 } from "./components/modal.js";
 import { cardToDelete, Card } from "./components/card.js";
-import { Api } from "./components/api.js";
-import { UserInfo } from "./components/userInfo.js";
+import { Api } from "./components/Api.js";
+import { UserInfo } from "./components/UserInfo.js";
 import { Section } from "./components/section";
 
+let cardsList;
+
+
+//--------------------------- API
 const api = new Api({
   baseUrl: "https://nomoreparties.co/v1/plus-cohort-9",
   headers: {
@@ -42,9 +46,15 @@ const api = new Api({
   },
 });
 
-let cardsList;
+//----------------------------- user info
 
-const userInfo = new UserInfo(".profile__name", ".profile__subtitle");
+const userInfo = new UserInfo({
+  name: ".profile__name",
+  about: ".profile__subtitle",
+  avatar: ".profile__avatar"
+})
+
+//const userInfo = new UserInfo(".profile__name", ".profile__subtitle");
 
 // popups.forEach((popup) => {
 //   popup.addEventListener("mousedown", function (evt) {

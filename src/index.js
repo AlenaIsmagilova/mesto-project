@@ -25,11 +25,11 @@ import { enableValidation } from "./components/validate.js";
 import {
   handleEditAvatarFormSubmit,
   openPopup,
-  closePopup,
-  PopupWithImage,
+  closePopup
 } from "./components/modal.js";
 
 import { PopupWithForm } from "./components/PopupWithForm";
+import { PopupWithImage } from "./components/PopupWuthImage";
 import { cardToDelete, Card } from "./components/card.js";
 import { Api } from "./components/Api.js";
 import { UserInfo } from "./components/UserInfo.js";
@@ -69,6 +69,7 @@ const userInfo = new UserInfo({
 // });
 
 const imagePopup = new PopupWithImage("#popupImage");
+imagePopup.setEventListeners();
 
 const editFormPopup = new PopupWithForm(
   "#popupEdit",
@@ -191,7 +192,7 @@ api
       cards.forEach(function (card) {
         const cardElement = new Card(
           card,
-          () => imagePopup.open({ link: card.link, name: card.name }),
+          () => imagePopup.open({ imgSrc: card.link, imgPlaceTitle: card.name }),
           // (imgSrc) => {
           //   openPopup(popupImage);
           //   popupElImage.src = imgSrc;

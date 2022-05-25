@@ -11,8 +11,4 @@ export class PopupWithImage extends Popup {
       this.popup.querySelector(".popup__caption").textContent = imgPlaceTitle;
       super.open();
     }
-
-    setEventListeners() {
-        super.setEventListeners();
-    }
   }

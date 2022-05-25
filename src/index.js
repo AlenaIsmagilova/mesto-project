@@ -1,42 +1,19 @@
 import "./pages/index.css";
 import {
   options,
-  editForm,
-  addForm,
   profileButton,
-  popupEdit,
-  formInput,
-  profileName,
-  profileProf,
-  inputProfEditForm,
   editAvatarButton,
-  popupEditAvatar,
   profileButtonAdd,
-  popupAdd,
   editProfileAvatar,
-  popups,
-  deleteCardButton,
-  popupDeleteCard,
-  popupElImage,
-  popupImage,
-  card,
+  deleteCardButton
 } from "./components/constants.js";
-import { enableValidation } from "./components/validate.js";
-import {
-  handleEditAvatarFormSubmit,
-  openPopup,
-  closePopup
-} from "./components/modal.js";
-
+import { Validate } from "./components/Validate";
 import { PopupWithForm } from "./components/PopupWithForm";
-import { PopupWithImage } from "./components/PopupWuthImage";
-import { cardToDelete, Card } from "./components/card.js";
+import { PopupWithImage } from "./components/PopupWithImage";
+import { cardToDelete, Card } from "./components/Card.js";
 import { Api } from "./components/Api.js";
 import { UserInfo } from "./components/UserInfo.js";
-import { Section } from "./components/section";
-
-let cardsList;
-
+import { Section } from "./components/Section";
 
 //--------------------------- API
 const api = new Api({
@@ -46,6 +23,8 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
+
+let cardsList;
 
 //----------------------------- user info
 
@@ -159,7 +138,7 @@ const editAvatarForm = new PopupWithForm(
 
 editAvatarForm._setEventListeners();
 
-enableValidation(options);
+//enableValidation(options);
 
 // editAvatarForm.addEventListener("submit", handleEditAvatarFormSubmit);
 
@@ -253,3 +232,24 @@ deleteCardButton.addEventListener("click", function () {
       console.log(err);
     });
 });
+
+// Валидация форм
+const validatorEditProfile = new Validate(
+  options,
+  editFormPopup.popup.querySelector("form")
+);
+
+const validatorAddCard = new Validate(
+  options,
+  addFormPopup.popup.querySelector("form")
+);
+
+const validatorEditAvatar = new Validate(
+  options,
+  editAvatarForm.popup.querySelector("form")
+)
+
+// Активировать валидацию
+validatorEditProfile.enableValidation();
+validatorAddCard.enableValidation();
+validatorEditAvatar.enableValidation();

@@ -11,7 +11,7 @@ export class Api {
     this._url = options.baseUrl;
     this._headers = options.headers;
     this._cardsUrl = `${this._url}/cards`;
-    this._userUrl = `${this._url}/users/me`
+    this._userUrl = `${this._url}/users/me`;
   }
 
   _checkResponse(res) {

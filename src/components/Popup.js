@@ -7,13 +7,13 @@ export class Popup {
   //открытие попапа
   open() {
     this.popup.classList.add("popup_opened");
-    document.addEventListener("keydown", this._linkedHandleEscClosed);
+    window.addEventListener("keydown", this._linkedHandleEscClosed);
   }
 
   //закрытие попапа
   close() {
     this.popup.classList.remove("popup_opened");
-    document.removeEventListener("keydown", this._linkedHandleEscClosed);
+    window.removeEventListener("keydown", this._linkedHandleEscClosed);
   }
 
   //метод для закрытия попапа клавишей Esc

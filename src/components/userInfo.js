@@ -1,5 +1,5 @@
 export class UserInfo {
-  constructor (selector) {
+  constructor(selector) {
     this._name = document.querySelector(selector.name);
     this._about = document.querySelector(selector.about);
     this._avatar = document.querySelector(selector.avatar);
@@ -18,11 +18,9 @@ export class UserInfo {
   }
 
   setUserAvatar(link) {
-    this._avatar.src = link
+    this._avatar.src = link;
   }
 }
-
-
 
 //-----------------------------------------  Алена начало
 /* export class UserInfo {

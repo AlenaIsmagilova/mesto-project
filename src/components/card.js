@@ -1,21 +1,4 @@
-
-
-
-//-----------------------------------------------------      Аленино начало -----------------------------------------------------
-
-import {
-  card,
-  popupElImage,
-  popupElCaption,
-  popupImage,
-  popupDeleteCard,
-  deleteCardButton,
-} from "./constants.js";
-import { closePopup, openPopup, Popup } from "./modal.js";
-import { Api } from "./Api.js";
-
 export let cardToDelete = {};
-
 export class Card {
   constructor(card, handleCardClick, selector, userId, api) {
     this._title = card.name;
@@ -128,10 +111,6 @@ export class Card {
     }
   }
 }
-
-
-//-----------------------------------------------------      Аленино конец -----------------------------------------------------
-
 
 // export function createCard(
 //   link,

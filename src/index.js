@@ -26,9 +26,10 @@ import {
   handleEditAvatarFormSubmit,
   openPopup,
   closePopup,
-  PopupWithForm,
   PopupWithImage,
 } from "./components/modal.js";
+
+import { PopupWithForm } from "./components/PopupWithForm";
 import { cardToDelete, Card } from "./components/card.js";
 import { Api } from "./components/Api.js";
 import { UserInfo } from "./components/UserInfo.js";

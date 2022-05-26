@@ -5,11 +5,11 @@ import {
   editAvatarButton,
   profileButtonAdd,
   editProfileAvatar,
-  deleteCardButton
+  deleteCardButton,
 } from "./components/constants.js";
 import { Validate } from "./components/validate";
-import { PopupWithForm } from "./components/popupWithForm";
-import { PopupWithImage } from "./components/popupWithImage";
+import { PopupWithForm } from "./components/popupWithForm.js";
+import { PopupWithImage } from "./components/popupWithImage.js";
 import { cardToDelete, Card } from "./components/card.js";
 import { Api } from "./components/api.js";
 import { UserInfo } from "./components/userInfo.js";
@@ -31,8 +31,8 @@ let cardsList;
 const userInfo = new UserInfo({
   name: ".profile__name",
   about: ".profile__subtitle",
-  avatar: ".profile__avatar"
-})
+  avatar: ".profile__avatar",
+});
 
 //const userInfo = new UserInfo(".profile__name", ".profile__subtitle");
 
@@ -171,7 +171,8 @@ api
       cards.forEach(function (card) {
         const cardElement = new Card(
           card,
-          () => imagePopup.open({ imgSrc: card.link, imgPlaceTitle: card.name }),
+          () =>
+            imagePopup.open({ imgSrc: card.link, imgPlaceTitle: card.name }),
           // (imgSrc) => {
           //   openPopup(popupImage);
           //   popupElImage.src = imgSrc;
@@ -247,7 +248,7 @@ const validatorAddCard = new Validate(
 const validatorEditAvatar = new Validate(
   options,
   editAvatarForm.popup.querySelector("form")
-)
+);
 
 // Активировать валидацию
 validatorEditProfile.enableValidation();

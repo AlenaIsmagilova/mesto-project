@@ -11,6 +11,7 @@ export class Validate {
     this._inputElementsArray = Array.from(
       this._formElement.querySelectorAll(this._formInput)
     );
+    // this._formList = Array.from(document.querySelectorAll(options.formElement));
   }
 
   _setSubmitButtonAbility() {
@@ -37,6 +38,11 @@ export class Validate {
     this._formElement.addEventListener("input", () =>
       this._checkValidityForSubmit()
     );
+    // this._formList.forEach((formElement) => {
+    //   formElement.addEventListener("submit", (evt) => {
+    //     evt.preventDefault();
+    //   });
+    // });
   }
 
   _showError(inputElement) {

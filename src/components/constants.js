@@ -30,7 +30,7 @@ export const options = {
   formInput: ".form__input",
   submitButtonSelector: ".form__button",
   inputErrorClass: ".form__input-error_active",
-  errorClass: ".form__input_type_error",
+  inputError: "form__input_type_error",
 };
 
 export const profileButton = document.querySelector(".profile__button");

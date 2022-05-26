@@ -1,16 +1,4 @@
-import {
-  card,
-  popupElImage,
-  popupElCaption,
-  popupImage,
-  popupDeleteCard,
-  deleteCardButton,
-} from "./constants.js";
-import { closePopup, openPopup, Popup } from "./modal.js";
-import { Api } from "./api.js";
-
 export let cardToDelete = {};
-
 export class Card {
   constructor(card, handleCardClick, selector, userId, api) {
     this._title = card.name;

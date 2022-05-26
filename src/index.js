@@ -1,39 +1,21 @@
 import "./pages/index.css";
 import {
   options,
-  editForm,
-  addForm,
   profileButton,
-  popupEdit,
-  formInput,
-  profileName,
-  profileProf,
-  inputProfEditForm,
   editAvatarButton,
-  popupEditAvatar,
   profileButtonAdd,
-  popupAdd,
   editProfileAvatar,
-  popups,
-  deleteCardButton,
-  popupDeleteCard,
-  popupElImage,
-  popupImage,
-  card,
+  deleteCardButton
 } from "./components/constants.js";
-import { enableValidation } from "./components/validate.js";
-import {
-  handleEditAvatarFormSubmit,
-  openPopup,
-  closePopup,
-  PopupWithForm,
-  PopupWithImage,
-} from "./components/modal.js";
+import { Validate } from "./components/validate";
+import { PopupWithForm } from "./components/popupWithForm";
+import { PopupWithImage } from "./components/popupWithImage";
 import { cardToDelete, Card } from "./components/card.js";
 import { Api } from "./components/api.js";
 import { UserInfo } from "./components/userInfo.js";
 import { Section } from "./components/section";
 
+//--------------------------- API
 const api = new Api({
   baseUrl: "https://nomoreparties.co/v1/plus-cohort-9",
   headers: {
@@ -44,7 +26,15 @@ const api = new Api({
 
 let cardsList;
 
-const userInfo = new UserInfo(".profile__name", ".profile__subtitle");
+//----------------------------- user info
+
+const userInfo = new UserInfo({
+  name: ".profile__name",
+  about: ".profile__subtitle",
+  avatar: ".profile__avatar"
+})
+
+//const userInfo = new UserInfo(".profile__name", ".profile__subtitle");
 
 // popups.forEach((popup) => {
 //   popup.addEventListener("mousedown", function (evt) {
@@ -58,6 +48,7 @@ const userInfo = new UserInfo(".profile__name", ".profile__subtitle");
 // });
 
 const imagePopup = new PopupWithImage("#popupImage");
+imagePopup.setEventListeners();
 
 const editFormPopup = new PopupWithForm(
   "#popupEdit",
@@ -147,7 +138,7 @@ const editAvatarForm = new PopupWithForm(
 
 editAvatarForm._setEventListeners();
 
-enableValidation(options);
+//enableValidation(options);
 
 // editAvatarForm.addEventListener("submit", handleEditAvatarFormSubmit);
 
@@ -180,7 +171,7 @@ api
       cards.forEach(function (card) {
         const cardElement = new Card(
           card,
-          () => imagePopup.open({ link: card.link, name: card.name }),
+          () => imagePopup.open({ imgSrc: card.link, imgPlaceTitle: card.name }),
           // (imgSrc) => {
           //   openPopup(popupImage);
           //   popupElImage.src = imgSrc;
@@ -241,3 +232,24 @@ deleteCardButton.addEventListener("click", function () {
       console.log(err);
     });
 });
+
+// Валидация форм
+const validatorEditProfile = new Validate(
+  options,
+  editFormPopup.popup.querySelector("form")
+);
+
+const validatorAddCard = new Validate(
+  options,
+  addFormPopup.popup.querySelector("form")
+);
+
+const validatorEditAvatar = new Validate(
+  options,
+  editAvatarForm.popup.querySelector("form")
+)
+
+// Активировать валидацию
+validatorEditProfile.enableValidation();
+validatorAddCard.enableValidation();
+validatorEditAvatar.enableValidation();

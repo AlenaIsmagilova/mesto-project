@@ -6,14 +6,14 @@ import {
   profileButtonAdd,
   editProfileAvatar,
   deleteCardButton,
-} from "./components/constants.js";
-import { Validate } from "./components/validate";
-import { PopupWithForm } from "./components/popupWithForm.js";
-import { PopupWithImage } from "./components/popupWithImage.js";
-import { cardToDelete, Card } from "./components/card.js";
-import { Api } from "./components/api.js";
-import { UserInfo } from "./components/userInfo.js";
-import { Section } from "./components/section";
+} from "./components/Constants.js";
+import { Validate } from "./components/FormValidate";
+import { PopupWithForm } from "./components/PopupWithForm.js";
+import { PopupWithImage } from "./components/PopupWithImage.js";
+import { cardToDelete, Card } from "./components/Card.js";
+import { Api } from "./components/Api.js";
+import { UserInfo } from "./components/UserInfo.js";
+import { Section } from "./components/Section";
 
 //--------------------------- API
 const api = new Api({

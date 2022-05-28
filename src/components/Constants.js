@@ -66,3 +66,4 @@ export const popups = document.querySelectorAll(".popup");
 export const popupDeleteCard = document.querySelector("#popupDeleteCard");
 export const deleteCardButton = document.querySelector("#deleteCardButton");
 export const formButtons = document.querySelectorAll(".form__button");
+export let cardToDelete = {};

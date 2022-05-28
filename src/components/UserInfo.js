@@ -12,33 +12,9 @@ export class UserInfo {
     };
   }
 
-  setUserInfo(user) {
-    this._name.textContent = user.name;
-    this._about.textContent = user.about;
-  }
-
-  setUserAvatar(link) {
-    this._avatar.src = link;
+  setUserInfo({ name, about, avatar }) {
+    this._name.textContent = name;
+    this._about.textContent = about;
+    this._avatar.src = avatar;
   }
 }
-
-//-----------------------------------------  Алена начало
-/* export class UserInfo {
-  constructor(firstnameSelector, aboutProfSelector) {
-    this.firstnameSelector = document.querySelector(firstnameSelector);
-    this.aboutProfSelector = document.querySelector(aboutProfSelector);
-  }
-
-  getUserInfo() {
-    return {
-      name: this.firstnameSelector.textContent,
-      about: this.aboutProfSelector.textContent,
-    };
-  }
-
-  setUserInfo(user) {
-    this.firstnameSelector.textContent = user.name;
-    this.aboutProfSelector.textContent = user.about;
-  }
-} */
-//-----------------------------------------  Алена конец

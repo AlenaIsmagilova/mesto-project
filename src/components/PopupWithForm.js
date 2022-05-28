@@ -8,16 +8,16 @@ export class PopupWithForm extends Popup {
     this._inputs = this._form.querySelectorAll(".form__input");
   }
 
-  _getInputValues() {
+  getInputValues() {
     const inputsValues = {};
     this._inputs.forEach((input) => (inputsValues[input.name] = input.value));
 
     return inputsValues;
   }
 
-  _setEventListeners() {
+  setEventListeners() {
     super.setEventListeners();
-    this.inputsValues = this._getInputValues();
+    this.inputsValues = this.getInputValues();
     this._form.addEventListener("submit", this._handleFormSubmit);
   }
 
@@ -26,14 +26,9 @@ export class PopupWithForm extends Popup {
     this._form.reset();
   }
 
-  setInitialProfileInfo(user) {
+  setInputValues(data) {
     this._inputs.forEach((input) => {
-      if (input.id === "inputFirstname") {
-        input.value = user.name;
-      }
-      if (input.id === "inputProf") {
-        input.value = user.about;
-      }
+      input.value = data[input.name];
     });
   }
 }

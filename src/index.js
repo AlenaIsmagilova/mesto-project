@@ -7,7 +7,7 @@ import {
   editProfileAvatar,
   deleteCardButton,
   cardToDelete,
-} from "./components/Constants.js";
+} from "./utils/Constants.js";
 import { FormValidator } from "./components/FormValidator";
 import { PopupWithForm } from "./components/PopupWithForm.js";
 import { PopupWithImage } from "./components/PopupWithImage.js";
@@ -24,7 +24,7 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-
+let user;
 let cardsList;
 
 //----------------------------- user info
@@ -168,26 +168,6 @@ api
   .catch((err) => {
     console.log(err);
   });
-
-deleteCardButton.addEventListener("click", function () {
-  api
-    .deleteCard(cardToDelete.cardId)
-    .then((data) => {
-      const card = new Card(
-        data,
-        () => {
-          imagePopup.open({ imgSrc: data.link, imgPlaceTitle: data.name });
-        },
-        "#card",
-        data.owner._id,
-        api
-      );
-      card.setEventListeners();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
 
 // Валидация форм
 const validatorEditProfile = new FormValidator(

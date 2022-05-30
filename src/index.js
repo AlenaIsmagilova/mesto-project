@@ -8,7 +8,7 @@ import {
   deleteCardButton,
   cardToDelete,
 } from "./components/Constants.js";
-import { Validate } from "./components/FormValidate";
+import { FormValidator } from "./components/FormValidator";
 import { PopupWithForm } from "./components/PopupWithForm.js";
 import { PopupWithImage } from "./components/PopupWithImage.js";
 import { Card } from "./components/Card.js";
@@ -193,17 +193,17 @@ deleteCardButton.addEventListener("click", function () {
 });
 
 // Валидация форм
-const validatorEditProfile = new Validate(
+const validatorEditProfile = new FormValidator(
   options,
   editFormPopup.popup.querySelector("form")
 );
 
-const validatorAddCard = new Validate(
+const validatorAddCard = new FormValidator(
   options,
   addFormPopup.popup.querySelector("form")
 );
 
-const validatorEditAvatar = new Validate(
+const validatorEditAvatar = new FormValidator(
   options,
   editAvatarForm.popup.querySelector("form")
 );

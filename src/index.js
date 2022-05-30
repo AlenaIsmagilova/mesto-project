@@ -44,7 +44,7 @@ const editFormPopup = new PopupWithForm(
   (evt) => {
     evt.preventDefault();
     const inputValues = editFormPopup.getInputValues();
-    evt.submitter.textContent = "Сохранение...";
+    editFormPopup.renderLoading(true);
     api
       .updateUserProfile({
         name: inputValues.firstname,
@@ -68,7 +68,7 @@ const addFormPopup = new PopupWithForm(
   (evt) => {
     evt.preventDefault();
     const inputValues = addFormPopup.getInputValues();
-    evt.submitter.textContent = "Сохранение...";
+    addFormPopup.renderLoading(true);
     api
       .addNewCard({
         name: inputValues.place,
@@ -87,7 +87,6 @@ const addFormPopup = new PopupWithForm(
         const cardElement = createdCard.generate();
         cardsList.addItem(cardElement);
         addFormPopup.close();
-        evt.submitter.setAttribute("disabled", true);
       })
       .catch((err) => {
         console.log(err);
@@ -103,14 +102,13 @@ const editAvatarForm = new PopupWithForm(
   (evt) => {
     evt.preventDefault();
     const inputValues = editAvatarForm.getInputValues();
-    evt.submitter.textContent = "Сохранение...";
+    editAvatarForm.renderLoading(true);
     api
       .updateUserAvatar({ avatar: inputValues.link })
       .then((data) => {
         userInfo.setUserInfo(data);
         editAvatarForm.close();
         inputValues.link = "";
-        evt.submitter.setAttribute("disabled", true);
       })
       .catch((err) => {
         console.log(err);

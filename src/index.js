@@ -108,7 +108,6 @@ const editAvatarForm = new PopupWithForm(
       .then((data) => {
         userInfo.setUserInfo(data);
         editAvatarForm.close();
-        inputValues.link = "";
       })
       .catch((err) => {
         console.log(err);

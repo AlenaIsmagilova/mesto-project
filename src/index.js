@@ -57,7 +57,7 @@ const editFormPopup = new PopupWithForm(
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => (evt.submitter.textContent = "Сохранить"));
+      .finally(() => (editFormPopup.renderLoading(false)));
   }
 );
 editFormPopup.setEventListeners();
@@ -92,7 +92,7 @@ const addFormPopup = new PopupWithForm(
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => (evt.submitter.textContent = "Сохранить"));
+      .finally(() => (addFormPopup.renderLoading(false)));
   }
 );
 addFormPopup.setEventListeners();
@@ -115,7 +115,7 @@ const editAvatarForm = new PopupWithForm(
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => (evt.submitter.textContent = "Сохранить"));
+      .finally(() => (editAvatarForm.renderLoading(false)));
   }
 );
 

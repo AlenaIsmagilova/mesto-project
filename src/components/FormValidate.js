@@ -23,7 +23,7 @@ export class Validate {
   }
 
   resetErrors() {
-    this._formElement.querySelectorAll(this._formInput).forEach((input) => {
+    this._inputElementsArray.forEach((input) => {
       this._hideError(input);
     });
     this._checkValidityForSubmit();

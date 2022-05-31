@@ -5,8 +5,6 @@ import {
   editAvatarButton,
   profileButtonAdd,
   editProfileAvatar,
-  deleteCardButton,
-  cardToDelete,
 } from "./utils/Constants.js";
 import { FormValidator } from "./components/FormValidator";
 import { PopupWithForm } from "./components/PopupWithForm.js";
@@ -24,7 +22,6 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-let user;
 let cardsList;
 
 //----------------------------- user info

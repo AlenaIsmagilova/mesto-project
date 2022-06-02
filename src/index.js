@@ -35,6 +35,17 @@ const userInfo = new UserInfo({
 const imagePopup = new PopupWithImage("#popupImage");
 imagePopup.setEventListeners();
 
+function getCardElement(card, user) {
+  const cardElement = new Card(
+    card,
+    () => imagePopup.open({ imgSrc: card.link, imgPlaceTitle: card.name }),
+    "#card",
+    user._id,
+    api
+  );
+  return cardElement.generate();
+}
+
 const editFormPopup = new PopupWithForm(
   "#popupEdit",
   //здесь передаю функцию handleEditFormSubmit
@@ -54,7 +65,7 @@ const editFormPopup = new PopupWithForm(
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => (editFormPopup.renderLoading(false)));
+      .finally(() => editFormPopup.renderLoading(false));
   }
 );
 editFormPopup.setEventListeners();
@@ -72,23 +83,14 @@ const addFormPopup = new PopupWithForm(
         link: inputValues.link,
       })
       .then((data) => {
-        const createdCard = new Card(
-          data,
-          () => {
-            imagePopup.open({ imgSrc: data.link, imgPlaceTitle: data.name });
-          },
-          "#card",
-          data.owner._id,
-          api
-        );
-        const cardElement = createdCard.generate();
-        cardsList.addItem(cardElement);
+        const createdCard = getCardElement(data, data.owner);
+        cardsList.addItem(createdCard);
         addFormPopup.close();
       })
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => (addFormPopup.renderLoading(false)));
+      .finally(() => addFormPopup.renderLoading(false));
   }
 );
 addFormPopup.setEventListeners();
@@ -109,7 +111,7 @@ const editAvatarForm = new PopupWithForm(
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => (editAvatarForm.renderLoading(false)));
+      .finally(() => editAvatarForm.renderLoading(false));
   }
 );
 
@@ -137,22 +139,22 @@ api
     userInfo.setUserInfo(user);
     editProfileAvatar.setAttribute("src", user.avatar);
     api.getCards().then((cards) => {
-      function getCardElement(card) {
-        const cardElement = new Card(
-          card,
-          () =>
-            imagePopup.open({ imgSrc: card.link, imgPlaceTitle: card.name }),
-          "#card",
-          user._id,
-          api
-        );
-        return cardElement.generate();
-      }
+      // function getCardElement(card) {
+      //   const cardElement = new Card(
+      //     card,
+      //     () =>
+      //       imagePopup.open({ imgSrc: card.link, imgPlaceTitle: card.name }),
+      //     "#card",
+      //     user._id,
+      //     api
+      //   );
+      //   return cardElement.generate();
+      // }
       cardsList = new Section(
         {
           items: cards.reverse(),
           renderer: (item) => {
-            const createdCard = getCardElement(item);
+            const createdCard = getCardElement(item, user);
             cardsList.addItem(createdCard);
           },
         },

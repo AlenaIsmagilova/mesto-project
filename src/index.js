@@ -4,7 +4,6 @@ import {
   profileButton,
   editAvatarButton,
   profileButtonAdd,
-  editProfileAvatar,
 } from "./utils/Constants.js";
 import { FormValidator } from "./components/FormValidator";
 import { PopupWithForm } from "./components/PopupWithForm.js";
@@ -136,20 +135,9 @@ profileButtonAdd.addEventListener("click", function (evt) {
 api
   .getUser()
   .then((user) => {
+    console.log(user);
     userInfo.setUserInfo(user);
-    editProfileAvatar.setAttribute("src", user.avatar);
     api.getCards().then((cards) => {
-      // function getCardElement(card) {
-      //   const cardElement = new Card(
-      //     card,
-      //     () =>
-      //       imagePopup.open({ imgSrc: card.link, imgPlaceTitle: card.name }),
-      //     "#card",
-      //     user._id,
-      //     api
-      //   );
-      //   return cardElement.generate();
-      // }
       cardsList = new Section(
         {
           items: cards.reverse(),

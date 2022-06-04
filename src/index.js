@@ -118,6 +118,7 @@ editAvatarForm.setEventListeners();
 
 profileButton.addEventListener("click", (evt) => {
   evt.stopPropagation();
+  validatorEditProfile.resetErrors();
   editFormPopup.open();
   const { name, about } = userInfo.getUserInfo();
   editFormPopup.setInputValues({ firstname: name, profession: about });
@@ -125,17 +126,18 @@ profileButton.addEventListener("click", (evt) => {
 
 editAvatarButton.addEventListener("click", function (evt) {
   evt.stopPropagation();
+  validatorEditAvatar.resetErrors();
   editAvatarForm.open();
 });
 
 profileButtonAdd.addEventListener("click", function (evt) {
   evt.stopPropagation();
+  validatorAddCard.resetErrors();
   addFormPopup.open();
 });
 api
   .getUser()
   .then((user) => {
-    console.log(user);
     userInfo.setUserInfo(user);
     api.getCards().then((cards) => {
       cardsList = new Section(

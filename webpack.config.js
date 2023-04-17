@@ -4,12 +4,13 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: { main: "/src/index.js" },
+  entry: ["babel-polyfill", "/src/index.js"],
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "main.js",
     publicPath: "",
   },
+  devtool: "source-map",
   mode: "development",
   devServer: {
     static: path.resolve(__dirname, "./dist"), // путь, куда "смотрит" режим разработчика

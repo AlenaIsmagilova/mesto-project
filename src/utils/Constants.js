@@ -30,7 +30,7 @@ export const options = {
   formInput: ".form__input",
   submitButtonSelector: ".form__button",
   inputErrorClass: ".form__input-error_active",
-  errorClass: ".form__input_type_error",
+  inputError: "form__input_type_error",
 };
 
 export const profileButton = document.querySelector(".profile__button");
@@ -66,3 +66,4 @@ export const popups = document.querySelectorAll(".popup");
 export const popupDeleteCard = document.querySelector("#popupDeleteCard");
 export const deleteCardButton = document.querySelector("#deleteCardButton");
 export const formButtons = document.querySelectorAll(".form__button");
+export let cardToDelete = {};
